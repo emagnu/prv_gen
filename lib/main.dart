@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 //  IMPORT FILES
 import 'config/router/app_router.dart';
 import 'config/theme/app_theme.dart';
+import 'presentation/providers/providers.dart';
 //  //   ///
 
 void main() {
@@ -18,11 +19,13 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final GoRouter appRouter = ref.watch(appRouterProvider);
+    final bool isDarkmode = ref.watch(toggleThemeProvider);
 
     return MaterialApp.router(
       title: 'Todos los Providers de Riverpod con Generation',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(isDarkmode: false).getTheme(),
+      // theme: AppTheme(isDarkmode: false).getTheme(),
+      theme: AppTheme(isDarkmode: isDarkmode).getTheme(),
       routerConfig: appRouter,
       // theme: ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
